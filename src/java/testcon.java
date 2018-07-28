@@ -32,9 +32,16 @@ public class testcon {
             Logger.getLogger(testcon.class.getName()).log(Level.SEVERE, null, ex);
         }
         */
+        /*
         insertOperation op = new insertOperation();
         String ack = op.addNewUser("shibli", "1234", "cg4", "kon ek jaygate", "016969", "user");
         System.out.println(ack);
+        */
+        /*
+        deleteOperation op = new deleteOperation();
+        String ack = op.removeAUser("shibli");
+        System.out.println(ack);
+        */
         
             
             /*

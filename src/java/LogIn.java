@@ -48,13 +48,7 @@ public class LogIn extends HttpServlet {
         }
         
     }
-    /*
-    Statement stmt=con.createStatement();  
-            System.out.println("connected");
 
-            String bal = "INSERT INTO `users`(`UserName`, `Password`, `Name`, `Phone`, `Address`, `Type`) VALUES ('"+name+"','"+name+"','"+name+"','"+name+"','"+name+"','"+name+"')";
-            stmt.executeUpdate(bal);
-    */
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
