@@ -1,3 +1,5 @@
+package delivery;
+
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -36,6 +38,20 @@ public class insertOperation {
             //Logger.getLogger(insertOperation.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "Successfully Added New User!";
+    }
+    
+    //add new medicine 
+    public String addNewMedicine(String DrugsFor, String DrugClass, String BrandName, String Contains, 
+            String DosageForm, String Manufacturer, String Price ){
+            String sql = "INSERT INTO `medicine_list`( `DrugsFor`, `DrugClass`, `BrandName`, `Contains`, `DosageForm`, `Manufacturer`, `Price`) "+ "VALUES ('"+DrugsFor+"','"+DrugClass+"','"+BrandName+"','"+Contains+"','"+DosageForm+"','"+Manufacturer+"','"+Price+"')";
+            try {
+                stmt.executeUpdate(sql);
+            } catch (SQLException ex) {
+                //return "Wrong information";
+                Logger.getLogger(insertOperation.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        return "Successfully Added New Medicine!";
     }
     
 }

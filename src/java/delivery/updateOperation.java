@@ -1,3 +1,5 @@
+package delivery;
+
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,9 +16,9 @@ import java.util.logging.Logger;
  *
  * @author swapn
  */
-public class deleteOperation {
+public class updateOperation {
     Statement stmt;
-    public deleteOperation(){
+    public updateOperation(){
         DBConnection myDB = new DBConnection();
         try {
             stmt=myDB.con.createStatement();
@@ -25,16 +27,10 @@ public class deleteOperation {
         }
     }
     
-    String removeAUser( String uname ){
-        String sql = "DELETE FROM `users` WHERE UserName = '"+uname+"'";
-        try {
-            stmt.executeUpdate(sql);
-        } catch (SQLException ex) {
-            return "Wrong Information";
-            //Logger.getLogger(deleteOperation.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return "Successfully Removed " + uname;
+    public String updateUserInfo( String uname, String pass, String name, String address, String phn, String type ){
+        new deleteOperation().removeAUser(uname);
+        String ack = new insertOperation().addNewUser(uname, pass, name, address, phn, type);
+        return ack;
     }
     
 }

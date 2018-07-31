@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function validateForm() {
+                var x1 = document.forms["addMedicine"]["DrugsFor"].value;
+                var x2 = document.forms["addMedicine"]["DrugClass"].value;
+                var x3 = document.forms["addMedicine"]["BrandName"].value;
+                var x4 = document.forms["addMedicine"]["Contains"].value;
+                var x5 = document.forms["addMedicine"]["DosageForm"].value;
+                var x6 = document.forms["addMedicine"]["Manufacturer"].value;
+                var x7 = document.forms["addMedicine"]["Price"].value;
+                
+                if (x1 == "" || x2 == "" || x3 == "" || x4 == "" || x5 == "" || x6 == "" || x7 == "") {
+                    alert("Some Fields are Empty!");
+                    return false;
+                }
+            }
+        </script>
+        
+    </head>
+    <body>
+        <form name="addMedicine" action="testing.jsp" onsubmit="return validateForm()" method="POST">
+            <table border="1" width="2" cellpadding="1">
+           
+                <tbody>
+                    <tr>
+                        <td>Drugs For</td>
+                        <td><textarea rows="2" cols="30" name = "DrugsFor" ></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Drug Class</td>
+                        <td><textarea rows="2" cols="30" name = "DrugClass" ></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Brand Name</td>
+                        <td><textarea rows="2" cols="30" name = "BrandName" ></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Contains</td>
+                        <td><textarea rows="2" cols="30" name = "Contains" ></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Dosage Form</td>
+                        <td><textarea rows="2" cols="30" name = "DosageForm" ></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Manufacturer</td>
+                        <td><textarea rows="2" cols="30" name = "Manufacturer" ></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td><textarea rows="1" cols="30" name = "Price" ></textarea></td>
+                    </tr>
+
+                </tbody>
+            </table>
+            
+            <input type="submit" value="AddMedicine" name="submit" />
+
+        </form>
+    </body>
+</html>
