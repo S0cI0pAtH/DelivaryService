@@ -4,6 +4,7 @@
     Author     : swapn
 --%>
 
+<%@page import="java.util.Iterator"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.lang.Integer"%>
@@ -157,6 +158,47 @@
                 RequestDispatcher requestDispatcher; 
                 requestDispatcher = request.getRequestDispatcher("/cart.jsp");
                 requestDispatcher.forward(request, response);
+            }else if("Confirm Order".equals(typ) ){
+                
+                
+                HttpSession ses = request.getSession();
+                String pList = "", qList = "";
+                if( (Set<Integer>)ses.getAttribute("cart") != null ){
+                    String uname = (String)ses.getAttribute("uname");
+                    Set<Integer> tot = (Set<Integer>)ses.getAttribute("cart");
+                    Iterator<Integer> it = tot.iterator();
+                    while(it.hasNext()){
+                        String id = it.next().toString();
+          
+                        String quantity = request.getParameter("op8");
+                        out.println(quantity);
+                        out.println("<br></br>");
+                        if( "".equals(pList) ){
+                            pList = id;
+                        }else{
+                            pList += ",";
+                            pList += id;
+                        }
+                        if( "".equals(qList) ){
+                            qList = quantity;
+                        }else{
+                            qList += ",";
+                            qList += quantity;
+                        }   
+                    }
+                    
+                    out.println(pList);
+                    out.print("<br></br>");
+                    out.println(qList);
+                    out.print("<br></br>");
+                    try{
+                        insertOperation op = new insertOperation();
+                        //op.addOrder(uname, pList, qList);
+                        out.println("Done");
+                    }catch( Exception e ){
+                        out.println("Error");
+                    }
+                }
             }
             out.println("here");
 

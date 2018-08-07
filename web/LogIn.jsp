@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Log In </title>
     </head>
+    
     <body> 
         <%      
             String clicked = request.getParameter("log" );
@@ -25,13 +26,17 @@
                 try{
                     operations ob = new operations();
                     if( ob.isValidUser(userName, password)){
+                        HttpSession ses = request.getSession();
+                        ses.setAttribute("uname", userName);
                         out.print("valid");
-                        response.sendRedirect("http://localhost:8080/DeliveryServer/HomePage.jsp");
+                        response.sendRedirect("HomePage.jsp");
+
                     }else{
-                        response.sendRedirect("http://localhost:8080/DeliveryServer/firstPage.html");
+                        response.sendRedirect("firstPage.html");
+
                     }
                 }catch(Exception e ){
-                    out.println(e);
+                    out.println("Error");
                 }
             }
             

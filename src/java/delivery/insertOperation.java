@@ -54,4 +54,16 @@ public class insertOperation {
         return "Successfully Added New Medicine!";
     }
     
+    public String addOrder(String uname, String products, String quantity  ){
+            String sql = "INSERT INTO `order_list`( `UserName`, `ProductIdList`, `QualityList`) VALUES ('"+uname+"','"+products+"','"+quantity+"')";
+            try {
+                stmt.executeUpdate(sql);
+            } catch (SQLException ex) {
+                //return "Wrong information";
+                Logger.getLogger(insertOperation.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        return "Successfully Added Order!";
+    }
+    
 }

@@ -20,8 +20,128 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <style>
+            .log{
+                text-align: center;
+                margin-bottom: 150px;
+            }
+            body{
+		background-color: #D5DBDB;
+            }
+            .name{
+                text-align: center;
+                font-size: 30px;
+                font-family: sans-serif;               
+            }
+            input[type=text] {
+			width: 25%;
+			padding: 12px 20px;
+			margin: 2px 0;
+			box-sizing: border-box;
+			height:10px;
+			
+		}
+		input[type=email] {
+			width: 25%;
+			padding: 12px 20px;
+			margin: 2px 0;
+			box-sizing: border-box;
+			height:10px;
+			
+		}
+		input[type=password] {
+			width: 25%;
+			padding: 12px 20px;
+			margin: 4px 0;
+			box-sizing: border-box;
+			height:10px;
+		}
+		h3.first{
+			color:#deff4f;
+			margin-right:20%;
+		}
+		h3.Last{
+			color:#deff4f;
+			margin-right:20%;
+		}
+		h3.uname{
+			color:#deff4f;
+			margin-right:20%;
+		}
+		h3.pass{
+			color:#deff4f;
+			margin-right:20%;
+		}
+		h3.age{
+			color:#deff4f;
+			margin-right:16%;
+                }
+		div.login{
+			text-align:center;
+			margin-top:10%;
+		}
+                h3.name{
+                        color:#deff4f;
+			margin-right:11%;
+                }
+                input[type=submit] {
+			width: 25%;
+			background-color: #5DADE2;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			margin-top:1%;
+			
+		}
+		input[type=submit]:hover {
+			background-color: #A9CCE3;
+		}
+		input[type=button]{
+			width: 25%;
+			background-color: red;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			margin-bottom:1%;
+		}
+                .class{
+                        text-align: center;
+                }
+                #customers {
+                    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+
+                #customers td, #customers th {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                }
+
+                #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+                #customers tr:hover {background-color: #ddd;}
+
+                #customers th {
+                    padding-top: 12px;
+                    padding-bottom: 12px;
+                    text-align: left;
+                    background-color: #5DADE2;
+                    color: white;
+                }
+        </style>
     </head>
     <body>
+        <div class ="name">
+            <a class="class" href="HomePage.jsp"><h1>Delivery Service</h1></a>
+        </div>
+        <hr/>
         <form name="searchMed" action="testing.jsp">
            <input type="text" name="search" value="" placeholder="Search" size="30" />
            <select name="searchOptions" >
@@ -33,13 +153,10 @@
            </select>
            <input type="submit" value="Search" name="submit" /> 
         </form>
-        <form name="cart" action="cart.jsp" method="POST">
-            <br></br><br></br><br></br>
-            <input type="submit" value="Cart" name="shorCart" style="height:30px; width:100px" />
-        </form>
+       
         
         
-        <table border="1" width="1" cellspacing="1" cellpadding="1">
+        <table border="1" width="1" cellspacing="1" cellpadding="1" id="customers" class="class">
             <thead>
                 <tr>
                     <th>Drug Id</th>
@@ -53,9 +170,7 @@
                     <th>Add to Cart</th>
                 </tr>
             </thead>
-            <br></br><br></br><br></br>
-            <tbody>
-                
+            <tbody>                
                 
                 <%
 
@@ -119,6 +234,8 @@
             </tbody>
         </table>
 
-        
+                <form name="cart" action="cart.jsp" method="POST" class="class">
+            <input type="submit" value="Cart" name="shorCart" />
+        </form>
     </body>
 </html>

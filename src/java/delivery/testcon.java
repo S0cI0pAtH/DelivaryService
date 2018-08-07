@@ -133,12 +133,17 @@ public class testcon {
                 System.out.println(i );
             }
             */
-            
+            /*
             operations op = new operations();
             ArrayList<Integer> tot = op.searchByOthers("CE", "BrandName");
             for( int i: tot ){
                 System.out.println(i);
             }
+            */
+            
+            insertOperation op = new insertOperation();
+            String ack = op.addOrder("swapnil", "8,9", "5,6,7");
+            System.out.println(ack);
              
     }
     

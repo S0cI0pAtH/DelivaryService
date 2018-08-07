@@ -9,7 +9,123 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+        <style>
+            .log{
+                text-align: center;
+                margin-bottom: 150px;
+            }
+            .log2{
+                text-align: center;
+            }
+            body{
+		background-color: #D5DBDB;
+            }
+            .name{
+                text-align: center;
+                font-size: 30px;
+                font-family: sans-serif;               
+            }
+            input[type=text] {
+			width: 25%;
+			padding: 12px 20px;
+			margin: 2px 0;
+			box-sizing: border-box;
+			height:10px;
+			
+		}
+		input[type=email] {
+			width: 25%;
+			padding: 12px 20px;
+			margin: 2px 0;
+			box-sizing: border-box;
+			height:10px;
+			
+		}
+		input[type=password] {
+			width: 25%;
+			padding: 12px 20px;
+			margin: 4px 0;
+			box-sizing: border-box;
+			height:10px;
+		}
+		h3.first{
+			color:#deff4f;
+			margin-right:20%;
+		}
+		h3.Last{
+			color:#deff4f;
+			margin-right:20%;
+		}
+		h3.uname{
+			color:#deff4f;
+			margin-right:20%;
+		}
+		h3.pass{
+			color:#deff4f;
+			margin-right:20%;
+		}
+		h3.age{
+			color:#deff4f;
+			margin-right:16%;
+                }
+		div.login{
+			text-align:center;
+			margin-top:10%;
+		}
+                h3.name{
+                        color:#deff4f;
+			margin-right:11%;
+                }
+                input[type=submit] {
+			width: 25%;
+			background-color: #5DADE2;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			margin-top:1%;
+			
+		}
+		input[type=submit]:hover {
+			background-color: #A9CCE3;
+		}
+		input[type=button]{
+			width: 25%;
+			background-color: red;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			margin-bottom:1%;
+		}
+                
+                #customers {
+                    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+
+                #customers td, #customers th {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                }
+
+                #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+                #customers tr:hover {background-color: #ddd;}
+
+                #customers th {
+                    padding-top: 12px;
+                    padding-bottom: 12px;
+                    text-align: left;
+                    background-color: #5DADE2;
+                    color: white;
+                }
+        </style>
         <script>
             function validateForm() {
                 var x1 = document.forms["register"]["name"].value;
@@ -26,36 +142,23 @@ and open the template in the editor.
         </script>
     </head>
     <body>
+         <div class ="name">
+            <a class="class" href="HomePage.jsp"><h1>Delivery Service</h1></a>
+        </div>
+        <hr/>
+        <div class="log">
         <form name="register" action="testing.jsp" onsubmit="return validateForm()" method="POST" >
-            <table border="1" width="2" cellpadding="1">
-                
-                <tbody>
-                    <tr>
-                        <td>Full Name </td>
-                        <td><input type="text" name="name" value="" size="30" /></td>
-                    </tr>
-                    <tr>
-                        <td>UserName</td>
-                        <td><input type="text" name="uname" value="" size="30" /></td>
-                    </tr>
-                    <tr>
-                        <td>Password</td>
-                        <td><input type="text" name="pass"  value="" size="30" /></td>
-                    </tr>
-                    <tr>
-                        <td>Address</td>
-                        <td><textarea rows="4" cols="30" name = "address" ></textarea></td>
-                    </tr>
-                    <tr>
-                        <td>Phone</td>
-                        <td><input type="text" name="phone"  value="" size="30" /></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <br></br>
-            <input type="submit" value="Register" name="submit" />
-
+          
+            <input type="text" name="name" value="" size="30" placeholder="Name" /><br/>
+                        <input type="text" name="uname" value="" size="30" placeholder="User Name" /><br/>
+                        <input type="text" name="pass"  value="" size="30" placeholder="Password"/><br/>
+                        <input type="text" name = "address" value="" size="30" placeholder="Address"/><br/>
+                        <input type="text" name="phone"  value="" size="30" placeholder="Phone No"/><br/>
+                        <input type="submit" value="Register" name="submit" /><br/>
         </form>
+        <form action="firstPage.html">
+            <input type="submit" value="LogIN" />
+        </form>
+        </div>
     </body>
 </html>
