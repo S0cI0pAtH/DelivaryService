@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.util.Pair;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -162,5 +163,32 @@ public class operations {
         int val = Integer.parseInt(num);
         return val;
     }
+    
+    public double getPrice( int id ){
+        String sql = "SELECT Price FROM `medicine_list` WHERE `id` = "+id+"";
+        try{
+            ResultSet rs=stmt.executeQuery(sql);
+            while(rs.next()){
+                double p = Double.parseDouble(rs.getString(1));
+                return p;
+            }
+        }catch( NumberFormatException | SQLException e ){
+            System.out.println("error!");
+            return 0.0;
+        }
+        return 0.0;
+    }
+    
+
 
 }
+
+
+
+
+/*
+
+<form name="remove" action="testing.jsp">
+                                        <td><input type="submit" value="DELETE<%=i.id%>" name="submit" style="height:50px; width:80px" /></td>
+                                        </form>
+*/

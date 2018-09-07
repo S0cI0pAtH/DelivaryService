@@ -4,6 +4,7 @@
     Author     : swapn
 --%>
 
+<%@page import="javafx.util.Pair"%>
 <%@page import="delivery.insertOperation"%>
 <%@page import="delivery.medicine"%>
 <%@page import="delivery.operations"%>
@@ -142,7 +143,7 @@
                    HttpSession ses1 = request.getSession();
                    if( (Set<Integer>)ses1.getAttribute("cart") != null ){
                        Set<Integer> tot = (Set<Integer>)ses1.getAttribute("cart");
-                       
+                       ArrayList<Pair <Integer,Integer>> mlist;
                        Iterator<Integer> it = tot.iterator();
                        while(it.hasNext()){
                            int id = it.next();
@@ -157,6 +158,7 @@
                               var db = parseFloat(pr);
                               var extra = parseInt(ex);
                               total = total + ( db * extra );
+                              
                            <%
                        }
                    }else{
@@ -181,7 +183,7 @@
             <a class="home" href="HomePage.jsp"><h1>Delivery Service</h1></a>
         </div>
         <hr/>
-        <h1> Ordered Medicine Lists </h1>
+        
         
         <table border="1" width="1" cellspacing="1" cellpadding="1" id="customers">
             <thead>
@@ -195,16 +197,17 @@
                     <th>Manufacturer</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Remove</th>
+   
                 </tr>
             </thead>
             <tbody>
-                
+                <form name= ""action="testing.jsp">
                     <%
                         HttpSession ses = request.getSession();
                         if( (Set<Integer>)ses.getAttribute("cart") != null ){
                            Set<Integer> tot = (Set<Integer>)ses.getAttribute("cart");
                            Iterator<Integer> it = tot.iterator();
+                           
                            while(it.hasNext()){
                                 int id = it.next();
                                 try{
@@ -219,35 +222,37 @@
                                         <td><textarea rows="2" cols="30" name = "DrugClass" disabled> <% out.println( i.Contains ); %> </textarea></td>
                                         <td><textarea rows="2" cols="15" name = "DrugClass" disabled> <% out.println( i.DosageForm ); %> </textarea></td>
                                         <td><textarea rows="2" cols="25" name = "DrugClass" disabled> <% out.println( i.Manufacturer ); %> </textarea></td>
-                                        <td><input  id="p<%=i.id%>" onkeyup="sum();" value = "<%=i.Price%>" disabled="disabled" ></td>
-                                        <td><input  id="<%=i.id%>" onkeyup="sum();" value = "0"></td>
-                                        <form name="remove" action="testing.jsp">
-                                        <td><input type="submit" value="DELETE<%=i.id%>" name="submit" style="height:50px; width:80px" /></td>
-                                        </form>
+                                        <td><input  id="p<%=i.id%>"  onkeyup="sum();" value = "<%=i.Price%>" disabled="disabled" ></td>
+                                        <td><input  id="<%=i.id%>" name ="<%=i.id%>" onkeyup="sum();" value = "0"></td>
+                                        
                                     </tr>
                                     <%
                                 }catch(Exception e ){
                                     out.println("Error");
                                 }
                            }
+
+                            
                         }
                         
                     %>
-            
+                    <h1>Total Bill: <input type="text" id ="billme" value="" disabled="disabled" /> </h1>
+                    <input type="submit" value="Confirm Order" name="submit" />
+                    
+                    <h1> Ordered Medicine Lists </h1>
+                </form>
+                        
+                   
                 
             </tbody>
         </table>
                   
                     
-       <div class="name2">
-           <h1>Total Bill: <input type="text" id ="billme" value="" disabled="disabled" /> </h1>
-       </div>   
+          
         
         <br></br><br></br><br></br>
         <div class="order">
-        <form action="HomePage.jsp">
-            <input type="submit" value="Confirm Order" name="submit" />
-        </form>
+       
         </div>
 
     </body>

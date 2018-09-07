@@ -121,7 +121,9 @@
         <%
             HttpSession ses = request.getSession();
             if( ses.getAttribute("uname") == null ){
-                response.sendRedirect("firstPage.html");
+                session.invalidate();
+                response.sendRedirect(request.getContextPath() + "/firstPage.html");
+                
             }
             %>
         </div>

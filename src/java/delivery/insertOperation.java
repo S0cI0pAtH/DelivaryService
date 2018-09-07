@@ -54,8 +54,8 @@ public class insertOperation {
         return "Successfully Added New Medicine!";
     }
     
-    public String addOrder(String uname, String products, String quantity  ){
-            String sql = "INSERT INTO `order_list`( `UserName`, `ProductIdList`, `QualityList`) VALUES ('"+uname+"','"+products+"','"+quantity+"')";
+    public String addOrder(String uname, String oList, String tbill  ){
+            String sql = "INSERT INTO `order_list`( `UserName`, `OrderList`, `TotalBill`) VALUES ('"+uname+"','"+oList+"','"+tbill+"')";
             try {
                 stmt.executeUpdate(sql);
             } catch (SQLException ex) {

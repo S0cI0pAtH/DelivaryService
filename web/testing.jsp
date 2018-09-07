@@ -4,6 +4,7 @@
     Author     : swapn
 --%>
 
+<%@page import="javafx.util.Pair"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.HashSet"%>
@@ -160,6 +161,8 @@
                 requestDispatcher.forward(request, response);
             }else if("Confirm Order".equals(typ) ){
                 
+                out.println("astese");
+
                 
                 HttpSession ses = request.getSession();
                 String pList = "", qList = "";
@@ -167,38 +170,45 @@
                     String uname = (String)ses.getAttribute("uname");
                     Set<Integer> tot = (Set<Integer>)ses.getAttribute("cart");
                     Iterator<Integer> it = tot.iterator();
+                    double totBill = 0;
+                    String olist = "pid ----- quantity\n";
                     while(it.hasNext()){
                         String id = it.next().toString();
-          
-                        String quantity = request.getParameter("op8");
-                        out.println(quantity);
-                        out.println("<br></br>");
-                        if( "".equals(pList) ){
-                            pList = id;
-                        }else{
-                            pList += ",";
-                            pList += id;
-                        }
-                        if( "".equals(qList) ){
-                            qList = quantity;
-                        }else{
-                            qList += ",";
-                            qList += quantity;
-                        }   
+                        String quantity = request.getParameter(id);
+                        operations op = new operations();
+                        
+                        
+                        int a = Integer.parseInt(id);
+                        int b = Integer.parseInt(quantity);
+                        double c = op.getPrice( a );
+            
+                        totBill += ( b * c );
+                        
+                        olist += id;
+                        olist += " ---- ";
+                        olist += b;
+                        olist += "\n";
+                          
                     }
-                    
-                    out.println(pList);
-                    out.print("<br></br>");
-                    out.println(qList);
-                    out.print("<br></br>");
+                    out.println("totalBILL " + totBill );
                     try{
                         insertOperation op = new insertOperation();
-                        //op.addOrder(uname, pList, qList);
+                        op.addOrder(uname, olist, totBill+"");
+                        RequestDispatcher requestDispatcher; 
+                        requestDispatcher = request.getRequestDispatcher("/HomePage.jsp");
+                        requestDispatcher.forward(request, response);
                         out.println("Done");
                     }catch( Exception e ){
                         out.println("Error");
                     }
                 }
+                
+
+            }else if( "logout".equals(typ)){
+                HttpSession ses = request.getSession();
+                session.invalidate();
+                ses.invalidate();
+                response.sendRedirect(request.getContextPath() + "/firstPage.html");
             }
             out.println("here");
 
